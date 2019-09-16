@@ -1,0 +1,6 @@
+keras
+tensorflow
+imageai
+opencv-python
+flask
+flask-auth
