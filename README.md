@@ -13,7 +13,7 @@ It will install all the dependencies for python and start the service in the por
 ## Usage
 Send the url of a dog image in a json request with the method POST. It will return the number an array of the dogs within the image.
 
-###Example
+### Example
 Using the following image:
 ![dogs](/images/dogs.jpg)
 
@@ -23,7 +23,7 @@ We will just send the following json to our api (using the url of the image)
 And will return us the response with the dogs within the image.
 ![responseJSON](/images/returnJSON.png)
 
-##Example in jupyter notebook and questions answered
+## Example in jupyter notebook and questions answered
 An example for several images of dogs can be seen in a Jupyter notebook in the folder `jupyterExample`. As well as the answers to the questions asked.
 
 ## Credits
