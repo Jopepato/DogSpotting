@@ -12,6 +12,7 @@ It will install all the dependencies for python and start the service in the por
 
 ## Usage
 Send the url of a dog image in a json request with the method POST. It will return the number an array of the dogs within the image.
+It will have to be requested in the `/predict`route.
 
 ### Example
 Using the following image:
