@@ -3,8 +3,11 @@ from flask import abort
 from flask import make_response
 from flask import request
 from imageai.Detection import ObjectDetection
+from botocore.exceptions import ClientError
 import os
 import urllib.request
+import boto3
+import logging
 
 
 def load_model():
@@ -22,7 +25,22 @@ def detect_dogs(imageUrl):
     detections = detector.detectCustomObjectsFromImage(custom_objects=custom,
      input_image=os.path.join(execution_path , "aux.jpg"), minimum_percentage_probability=60,
       output_image_path=os.path.join(execution_path , "result.jpg"), input_type="file", output_type="file")
+    upload_image("result.jpg")
     return detections
+
+def upload_image(imagePath):
+    # Upload the file
+    client = boto3.client(
+    's3',
+    aws_access_key_id=os.getenv('ACCESS_KEY'),
+    aws_secret_access_key=os.getenv('SECRET_KEY'),
+    )
+    try:
+        response = client.upload_file(imagePath, "bucket-dogspotting", "DogsResult")
+    except ClientError as e:
+        logging.error(e)
+        return False
+    return True
 
 app = Flask(__name__)
 
