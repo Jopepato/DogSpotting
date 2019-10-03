@@ -6,4 +6,6 @@ services:
       - "80:80"
     volumes:
       - .:/api
-      
+    environment:
+      - ACCESS_KEY=${access_key}
+      - SECRET_KEY=${secret_key}
